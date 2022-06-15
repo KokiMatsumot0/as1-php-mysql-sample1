@@ -6,13 +6,14 @@ services:
       - ./src:/var/www/html
     ports:
       - 8765:80
-      
-  backend:
-    image: densukest/mariadb-jp
     environment:
       - MARIADB_DATABASE=sample
       - MARIADB_USER=user
       - MARIADB_PASSWORD=pass
+      
+  backend:
+    image: densukest/mariadb-jp
+
     volumes:
       - ./initdb:/docker-entrypoint-initdb.d
 

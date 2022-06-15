@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php
-    $user = "user";
-    $pass = "pass";
-    $db = "sample";
+    $user = getenv("MARIADB_USER");
+    $pass = getenv("MARIADB_PASSWORD");
+    $db = getenv("MARIADB_DATABASE");
     $table = "hoge";
     $host = "backend";
     # ----
