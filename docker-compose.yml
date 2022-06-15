@@ -1,0 +1,19 @@
+version: "3"
+services:
+  frontend:
+    build: php-mariadb
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - 8765:80
+      
+  backend:
+    image: densukest/mariadb-jp
+    environment:
+      - MARIADB_DATABASE=sample
+      - MARIADB_USER=user
+      - MARIADB_PASSWORD=pass
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
+
+
