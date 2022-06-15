@@ -7,6 +7,13 @@
     $host = "backend";
     # ----
     $dsn = "mysql:dbname=${db};host=${host}"; # 接続文字列
+    $conn = null;
+try {
+    $conn = new PDO($dsn, $user, $pass); # コンストラクタへの引数としてDSN、ユーザー、パスワードを渡す
+} catch(PDOException $e) {
+    print("接続失敗: " . $e->getMessage());
+    die(); // 死ね(PHPとしての処理をここで中断する)
+}
 ?>
 <html lang="ja">
 <head>
@@ -16,15 +23,6 @@
     <title>Document</title>
 </head>
 <body>
-<?php
-$conn = null;
-try {
-    $conn = new PDO($dsn, $user, $pass); # コンストラクタへの引数としてDSN、ユーザー、パスワードを渡す
-} catch(PDOException $e) {
-    print("接続失敗: " . $e->getMessage());
-    die(); // 死ね(PHPとしての処理をここで中断する)
-}
-?>
 
 <?php
         $sql = "select name, zip from ${table}"; # SQLのクエリコード
